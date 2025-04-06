@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { MotionValue, motion, useScroll, useTransform } from "motion/react";
 import { cn } from "../../lib/utils";
 import RotatingText from "./rotating-text";
-import CircleTiltedCard from "./circular-tilted-card";
+import TiltedCard from "./tilted-card";
 import {
   IconBrightnessDown,
   IconBrightnessUp,
@@ -80,7 +80,7 @@ export const MacbookScroll = ({
           <span className="flex items-center flex-wrap">
             Kauan Izidoro, Software Engineer specialized in
             <RotatingText
-              texts={['Back-End', 'Microservices', 'Architecture', 'Gateways', 'Scalability', 'Performance', 'Security', 'APIs', 'ci&cd', 'Cloud']}
+              texts={['Back-End', 'Microservices', 'Architecture', 'Gateways', 'Scalability', 'Performance', 'Security', 'APIs', 'CI & CD', 'Cloud']}
               mainClassName="px-2 sm:px-2 md:px-3 bg-gray-100 text-black overflow-hidden py-0.5 sm:py-1 md:py-2 justify-center rounded-lg ml-2"
               staggerFrom={"last"}
               initial={{ y: "100%" }}
@@ -175,12 +175,21 @@ export const Lid = ({
         className="absolute inset-0 h-96 w-[32rem] rounded-2xl bg-[#010101] p-2"
       >
         <div className="absolute inset-0 rounded-lg bg-[#272729]" />
-        <CircleTiltedCard 
-            imageSrc="https://i.scdn.co/image/ab67616d0000b273d9985092cd88bffd97653b58"
-            diameter="100px"
-            captionText="use linux."/>
-        <div className="flex items-center justify-center">
-        </div>
+        <TiltedCard
+          imageSrc="https://i.scdn.co/image/ab67616d0000b273d9985092cd88bffd97653b58"
+          altText="Kendrick Lamar - GNX Album Cover"
+          captionText="Kendrick Lamar - GNX"
+          containerHeight="150px"
+          containerWidth="150px"
+          imageHeight="150px"
+          imageWidth="150px"
+          rotateAmplitude={12}
+          scaleOnHover={1.0}
+          showMobileWarning={false}
+          showTooltip={true}
+          displayOverlayContent={true}
+        />
+        <div className="flex items-center justify-center"></div>
       </motion.div>
     </div>
   );
