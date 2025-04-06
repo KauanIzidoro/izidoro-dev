@@ -2,8 +2,8 @@
 import React, { useEffect, useRef, useState } from "react";
 import { MotionValue, motion, useScroll, useTransform } from "motion/react";
 import { cn } from "../../lib/utils";
-import DecryptedText from "./decrypted-text";
-import TiltedCard from "./tilted-card";
+import RotatingText from "./rotating-text";
+import CircleTiltedCard from "./circular-tilted-card";
 import {
   IconBrightnessDown,
   IconBrightnessUp,
@@ -25,7 +25,6 @@ import { IconWorld } from "@tabler/icons-react";
 import { IconCommand } from "@tabler/icons-react";
 import { IconCaretLeftFilled } from "@tabler/icons-react";
 import { IconCaretDownFilled } from "@tabler/icons-react";
-// import Image from "next/image";
 
 export const MacbookScroll = ({
   src,
@@ -65,7 +64,6 @@ export const MacbookScroll = ({
   const rotate = useTransform(scrollYProgress, [0.1, 0.12, 0.3], [-28, -28, 0]);
   const textTransform = useTransform(scrollYProgress, [0, 0.3], [0, 100]);
   const textOpacity = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
-
   return (
     <div
       ref={ref}
@@ -79,8 +77,20 @@ export const MacbookScroll = ({
         className="mb-20 text-center text-3xl font-bold text-neutral-800 dark:text-white"
       >
         {title || (
-          <span>
-            <DecryptedText text="I am Kauan Izidoro, Software Engineer and specialist in Back-End systems." speed={100} maxIterations={20} characters="!@#$%&*?" className="revealed" parentClassName="all-letters" encryptedClassName="encrypted" />
+          <span className="flex items-center flex-wrap">
+            Kauan Izidoro, Software Engineer specialized in
+            <RotatingText
+              texts={['Back-End', 'Microservices', 'Architecture', 'Gateways', 'Scalability', 'Performance', 'Security', 'APIs', 'ci&cd', 'Cloud']}
+              mainClassName="px-2 sm:px-2 md:px-3 bg-gray-100 text-black overflow-hidden py-0.5 sm:py-1 md:py-2 justify-center rounded-lg ml-2"
+              staggerFrom={"last"}
+              initial={{ y: "100%" }}
+              animate={{ y: 0 }}
+              exit={{ y: "-120%" }}
+              staggerDuration={0.025}
+              splitLevelClassName="overflow-hidden pb-0.5 sm:pb-1 md:pb-1"
+              transition={{ type: "spring", damping: 30, stiffness: 400 }}
+              rotationInterval={2000}
+            />
           </span>
         )}
       </motion.h2>
@@ -149,7 +159,7 @@ export const Lid = ({
           className="absolute inset-0 flex items-center justify-center rounded-lg bg-[#010101]"
         >
           <span className="text-white">
-            <AceternityLogo />
+            K
           </span>
         </div>
       </div>
@@ -165,25 +175,12 @@ export const Lid = ({
         className="absolute inset-0 h-96 w-[32rem] rounded-2xl bg-[#010101] p-2"
       >
         <div className="absolute inset-0 rounded-lg bg-[#272729]" />
-        <TiltedCard
-          imageSrc="https://i.scdn.co/image/ab67616d0000b273d9985092cd88bffd97653b58"
-          altText="Kendrick Lamar - GNX Album Cover"
-          captionText="Kendrick Lamar - GNX"
-          containerHeight="300px"
-          containerWidth="300px"
-          imageHeight="300px"
-          imageWidth="300px"
-          rotateAmplitude={12}
-          scaleOnHover={1.2}
-          showMobileWarning={false}
-          showTooltip={true}
-          displayOverlayContent={true}
-          overlayContent={
-            <p className="tilted-card-demo-text">
-              Kendrick Lamar - GNX
-            </p>
-          }
-        />
+        <CircleTiltedCard 
+            imageSrc="https://i.scdn.co/image/ab67616d0000b273d9985092cd88bffd97653b58"
+            diameter="100px"
+            captionText="use linux."/>
+        <div className="flex items-center justify-center">
+        </div>
       </motion.div>
     </div>
   );
@@ -647,23 +644,23 @@ export const OptionKey = ({ className }: { className: string }) => {
   );
 };
 
-const AceternityLogo = () => {
-  return (
-    <svg
-      width="66"
-      height="65"
-      viewBox="0 0 66 65"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      className="h-3 w-3 text-white"
-    >
-      <path
-        d="M8 8.05571C8 8.05571 54.9009 18.1782 57.8687 30.062C60.8365 41.9458 9.05432 57.4696 9.05432 57.4696"
-        stroke="currentColor"
-        strokeWidth="15"
-        strokeMiterlimit="3.86874"
-        strokeLinecap="round"
-      />
-    </svg>
-  );
-};
+// const AceternityLogo = () => {
+//   return (
+//     <svg
+//       width="66"
+//       height="65"
+//       viewBox="0 0 66 65"
+//       fill="none"
+//       xmlns="http://www.w3.org/2000/svg"
+//       className="h-3 w-3 text-white"
+//     >
+//       <path
+//         d="M8 8.05571C8 8.05571 54.9009 18.1782 57.8687 30.062C60.8365 41.9458 9.05432 57.4696 9.05432 57.4696"
+//         stroke="currentColor"
+//         strokeWidth="15"
+//         strokeMiterlimit="3.86874"
+//         strokeLinecap="round"
+//       />
+//     </svg>
+//   );
+// };

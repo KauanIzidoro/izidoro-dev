@@ -35,7 +35,7 @@ interface DecryptedTextProps {
 
 export default function DecryptedText({
     text,
-    speed = 50,
+    speed = 25,
     maxIterations = 10,
     sequential = false,
     revealDirection = 'start',
