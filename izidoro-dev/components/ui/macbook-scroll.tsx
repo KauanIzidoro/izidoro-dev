@@ -4,6 +4,7 @@ import { MotionValue, motion, useScroll, useTransform } from "motion/react";
 import { cn } from "../../lib/utils";
 import RotatingText from "./rotating-text";
 import TiltedCard from "./tilted-card";
+import { BentoGridDemo } from "@/app/bento-grid-demo";
 import {
   IconBrightnessDown,
   IconBrightnessUp,
@@ -174,22 +175,28 @@ export const Lid = ({
         }}
         className="absolute inset-0 h-96 w-[32rem] rounded-2xl bg-[#010101] p-2"
       >
-        <div className="absolute inset-0 rounded-lg bg-[#272729]" />
-        <TiltedCard
-          imageSrc="https://i.scdn.co/image/ab67616d0000b273d9985092cd88bffd97653b58"
-          altText="Kendrick Lamar - GNX Album Cover"
-          captionText="Kendrick Lamar - GNX"
-          containerHeight="150px"
-          containerWidth="150px"
-          imageHeight="150px"
-          imageWidth="150px"
-          rotateAmplitude={12}
-          scaleOnHover={1.0}
-          showMobileWarning={false}
-          showTooltip={true}
-          displayOverlayContent={true}
-        />
-        <div className="flex items-center justify-center"></div>
+        <div className="absolute inset-0 rounded-lg bg-[#272729]">
+          <div className="flex flex-row p-2">
+            <div className="h-96 w-52">
+              <TiltedCard
+                imageSrc="profilephoto.png"
+                captionText="use linux."
+                containerHeight="360px"
+                containerWidth="200px"
+                imageHeight="360px"
+                imageWidth="200px"
+                rotateAmplitude={12}
+                scaleOnHover={1.0}
+                showMobileWarning={false}
+                showTooltip={true}
+                displayOverlayContent={true}
+              />
+            </div>
+            <div className="flex-1">
+              <BentoGridDemo />
+            </div>
+          </div>
+        </div>
       </motion.div>
     </div>
   );
