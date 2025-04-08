@@ -2,8 +2,10 @@
 import React, { useEffect, useRef, useState } from "react";
 import { MotionValue, motion, useScroll, useTransform } from "motion/react";
 import { cn } from "../../lib/utils";
-import RotatingText from "./rotating-text";
+// import RotatingText from "./rotating-text";
+import { MorphingText } from "./morphing-text";
 import TiltedCard from "./tilted-card";
+import { TextAnimate } from "./text-animated";
 import { BentoGridDemo } from "@/app/bento-grid-demo";
 import {
   IconBrightnessDown,
@@ -79,8 +81,10 @@ export const MacbookScroll = ({
       >
         {title || (
           <span className="flex items-center flex-wrap">
-            Kauan Izidoro, Software Engineer specialized in
-            <RotatingText
+            <TextAnimate animation="blurIn" by="character" startOnView>
+              Kauan Izidoro, Software Engineer specialized in
+            </TextAnimate>
+            {/* <RotatingText
               texts={['Back-End', 'Microservices', 'Architecture', 'Gateways', 'Scalability', 'Performance', 'Security', 'APIs', 'CI & CD', 'Cloud']}
               mainClassName="px-2 sm:px-2 md:px-3 bg-gray-100 text-black overflow-hidden py-0.5 sm:py-1 md:py-2 justify-center rounded-lg ml-2"
               staggerFrom={"last"}
@@ -91,7 +95,8 @@ export const MacbookScroll = ({
               splitLevelClassName="overflow-hidden pb-0.5 sm:pb-1 md:pb-1"
               transition={{ type: "spring", damping: 30, stiffness: 400 }}
               rotationInterval={2000}
-            />
+            /> */}
+            <MorphingText texts={['Back-End', 'Microservices', 'Architecture', 'Gateways', 'Scalability', 'Performance', 'Security', 'APIs', 'CI & CD', 'Cloud']} />
           </span>
         )}
       </motion.h2>
@@ -177,13 +182,13 @@ export const Lid = ({
       >
         <div className="absolute inset-0 rounded-lg bg-[#272729]">
           <div className="flex flex-row p-2">
-            <div className="h-96 w-52">
+            <div className="h-52 w-52">
               <TiltedCard
-                imageSrc="profilephoto.png"
+                imageSrc="gptprofillephoto.png"
                 captionText="use linux."
-                containerHeight="360px"
+                containerHeight="200px"
                 containerWidth="200px"
-                imageHeight="360px"
+                imageHeight="200px"
                 imageWidth="200px"
                 rotateAmplitude={12}
                 scaleOnHover={1.0}
